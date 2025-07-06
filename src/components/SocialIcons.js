@@ -3,11 +3,11 @@ import React from 'react';
 const SocialIcons = () => {
   const socialLinks = [
     {
-      url: 'https://linkedin.com/in/bharath-reddy-kanamakindha',
+      url: 'https://github.com/mohanreddynandaluru',
       icon: 'fab fa-linkedin'
     },
     {
-      url: 'https://github.com/kanamakindhabharathreddy',
+      url: 'https://www.linkedin.com/in/mohanreddynandaluru/',
       icon: 'fab fa-github'
     }
   ];

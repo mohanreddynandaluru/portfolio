@@ -44,6 +44,8 @@ body {
   display: grid;
   place-items: center;
   transition: var(--transition);
+  min-width: 44px;
+  min-height: 44px;
 }
 
 #white {
@@ -69,6 +71,11 @@ body {
   font-size: 1.5rem;
   transition: var(--transition);
   position: relative;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .social-link:hover {
@@ -130,8 +137,29 @@ body {
   transition: var(--transition);
 }
 
-.nav-link:hover::before {
+.nav-link:hover::before,
+.nav-link:active::before {
   width: 100%;
+}
+
+/* Mobile touch improvements */
+@media (max-width: 768px) {
+  .nav-link {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-link::before {
+    display: none;
+  }
+  
+  .nav-link:hover,
+  .nav-link:active {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+  }
 }
 
 /* Content */
@@ -141,12 +169,55 @@ body {
   padding: 2rem;
 }
 
+@media (max-width: 1350px) {
+  .container {
+    max-width: 1000px;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    max-width: 900px;
+    padding: 1rem;
+  }
+}
+
 .hero {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
+  margin-left: 80px;
+}
+
+@media (max-width: 1350px) {
+  .hero {
+    margin-left: 60px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .hero {
+    margin-left: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    margin-left: 0;
+    text-align: center;
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    margin-left: 0;
+    text-align: center;
+    padding: 0;
+  }
 }
 
 .name {
@@ -284,7 +355,15 @@ body {
 
 @media (max-width: 480px) {
   .skills-grid-5 {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .skills-grid-5 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
   }
 }
 
@@ -293,6 +372,20 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
 .project-card {
@@ -416,35 +509,265 @@ dotlottie-player {
   height: 100%;
 }
 
-@media (max-width: 768px) {
+/* Medium Desktop and Tablet */
+@media (max-width: 1350px) {
   .name {
-    font-size: 3rem;
+    font-size: 4rem;
   }
 
   .nav {
-    position: fixed;
-    bottom: 2rem;
+    left: 1rem;
+  }
+
+  .social-icons {
+    left: 1rem;
+  }
+
+  .container {
+    max-width: 1000px;
+  }
+
+  .hero {
+    padding-left: 120px;
+  }
+}
+
+/* Specific breakpoint for collision prevention */
+@media (max-width: 1200px) {
+  .name {
+    font-size: 3.5rem;
+  }
+
+  .hero {
+    padding-left: 100px;
+  }
+
+  .nav {
+    left: 0.75rem;
+  }
+
+  .social-icons {
+    left: 0.75rem;
+  }
+}
+
+/* Fix for 1350px collision */
+@media (min-width: 1201px) and (max-width: 1350px) {
+  .name {
+    font-size: 3.8rem;
+  }
+
+  .hero {
+    padding-left: 110px;
+  }
+
+  .nav {
+    left: 0.8rem;
+  }
+
+  .social-icons {
+    left: 0.8rem;
+  }
+}
+
+/* Tablet and Mobile Responsive Design */
+@media (max-width: 750px) {
+  .container,
+  .page,
+  .hero {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .name {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .container {
+    padding: 0.5rem;
+  }
+
+  .page {
+    padding: 0.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+
+  .nav {
+    top: auto;
+    bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
-    top: auto;
     flex-direction: row;
-    background: var(--glass);
-    padding: 1rem;
-    border-radius: 50px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
   }
 
   .social-icons {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 1rem;
+    right: 1rem;
     left: auto;
+    gap: 1rem;
+  }
+
+  .social-link {
+    font-size: 1.2rem;
+  }
+
+  .theme-toggle {
+    top: 1rem;
+    right: 1rem;
+    width: 35px;
+    height: 35px;
   }
 
   .loader {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
+  }
+
+  .hero {
+    min-height: 80vh;
+    text-align: center;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .name {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  .page {
+    padding: 0;
+  }
+
+  .nav {
+    bottom: 0.5rem;
+    padding: 0.5rem;
+    gap: 0.25rem;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .social-icons {
+    bottom: 0.5rem;
+    right: 0.5rem;
+    gap: 0.75rem;
+  }
+
+  .social-link {
+    font-size: 1rem;
+  }
+
+  .theme-toggle {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 30px;
+    height: 30px;
+  }
+
+  .hero {
+    min-height: 70vh;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .skill-card-custom {
+    width: 120px;
+    height: 120px;
+  }
+
+  .icon-container {
+    width: 50px;
+    height: 50px;
+  }
+
+  .skill-icon {
+    font-size: 1.5rem;
+  }
+
+  .skill-name {
+    font-size: 0.8rem;
+  }
+
+  .project-card {
+    padding: 1.5rem;
+  }
+
+  .project-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .project-card p {
+    font-size: 0.9rem;
+  }
+
+  .demo-link {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/* Extra Small Mobile Devices */
+@media (max-width: 360px) {
+  .name {
+    font-size: 1.8rem;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  .page {
+    padding: 0;
+  }
+
+  .nav {
+    padding: 0.4rem;
+  }
+
+  .nav-link {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .skill-card-custom {
+    width: 100px;
+    height: 100px;
+  }
+
+  .icon-container {
+    width: 40px;
+    height: 40px;
+  }
+
+  .skill-icon {
+    font-size: 1.2rem;
+  }
+
+  .skill-name {
+    font-size: 0.7rem;
   }
 }
 
